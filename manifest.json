@@ -1,0 +1,11 @@
+{
+  "manifest_version": 2,
+  "name": "Path of Exile de-abbreviate!",
+  "description": "This extension adds tooltips to Path of Exile abbreviations",
+  "version": "0.1",
+  "content_scripts": [ {
+    "js": [ "jquery-2.1.4.min.js", "jquery.qtip.min.js", "blockspring.js", "highlight.js", "main.js" ],
+    "css": [ "jquery.qtip.min.css", "main.css" ],
+    "matches": [ "https://www.reddit.com/r/pathofexile/*", "https://www.pathofexile.com/*"]
+  }]
+}
