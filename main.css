@@ -1,1 +1,2 @@
-.poeAbbrv_highlight{border-bottom: 2px dashed #999; cursor: help;}
+.poe-abbr-highlight{border-bottom: 2px dashed #999; cursor: help;}
+.poe-abbr-tooltip{border: 1px solid; border-color: #585858; background-color: #0c0b0b; color: #cac2a8; font-weight: bold;}

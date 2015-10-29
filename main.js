@@ -34,7 +34,7 @@
   	};
 
   	var queryAbbrvData = function() {
-  		blockspring.runParsed("query-google-spreadsheet", { "query": "SELECT A, B", "url": "https://docs.google.com/spreadsheets/d/1ASrqT4GIm0Pb2ey-BHfgojl26KaaZerXsiV5PpDdID4"}, { "api_key": "br_15314_39d07898688a710dbafc0508110ae664e678ac0b" }, function(res){
+  		blockspring.runParsed("query-google-spreadsheet", { "query": "SELECT A, B WHERE C = 1", "url": "https://docs.google.com/spreadsheets/d/1ASrqT4GIm0Pb2ey-BHfgojl26KaaZerXsiV5PpDdID4"}, { "api_key": "br_15314_39d07898688a710dbafc0508110ae664e678ac0b" }, function(res){
 			var errors = res.getErrors();
 
 			if(!errors.length){
@@ -44,17 +44,17 @@
 				localStorage.setItem('poeAbbreviations', abbrvDataJson);
 
 				parseAbbrvData(abbrvData);
+			}else{
+				console.log(errors);
 			}
 
 		});
   	}
 
   	var parseAbbrvData = function(abbrvData) {
-  		console.log(abbrvData);
-
   		var dataObj = abbrvData.data;
 
-		var dataArr = Object.keys(dataObj).map(function (key) {return dataObj[key].abbr});
+		var dataArr = Object.keys(dataObj).map(function (key) {return dataObj[key].abbr.trim() });
 		var abbrDescObj = {};
 
 		for(var i = 0; i < dataObj.length; i++){
@@ -62,12 +62,12 @@
 			abbrDescObj[abbrLower] = dataObj[i].desc;
 		}
 
-  		$('body').highlight(dataArr, {className: 'poeAbbrv_highlight', wordsOnly: true});
+  		$('body').highlight(dataArr, {className: 'poe-abbr-highlight', wordsOnly: true});
 
-		$('span.poeAbbrv_highlight').each(function(){
+		$('span.poe-abbr-highlight').each(function(){
 
 			var currEl = $(this);
-			var elVal  = currEl.text().toLowerCase();
+			var elVal  = currEl.text().trim().toLowerCase();
 
 			var elDesc = abbrDescObj[elVal];
 
@@ -82,7 +82,7 @@
 						target: currEl
 					},
 					style: {
-						classes: 'qtip-light qtip-shadow'
+						classes: 'qtip-light qtip-shadow poe-abbr-tooltip'
 					}
 				})
 			}
