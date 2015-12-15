@@ -58,7 +58,8 @@
 		var abbrDescObj = {};
 
 		for(var i = 0; i < dataObj.length; i++){
-			var abbrLower = dataObj[i].abbr.toLowerCase();
+			var abbrLower = dataObj[i].abbr.replace(/['"]+/g, '');
+			abbrLower = abbrLower.trim().toLowerCase();
 			abbrDescObj[abbrLower] = dataObj[i].desc;
 		}
 

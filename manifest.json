@@ -3,7 +3,7 @@
 
   "name": "Path of Exile abbreviation helper.",
   "description": "This extension adds tooltips to Path of Exile abbreviations",
-  "version": "0.1",
+  "version": "0.2",
 
   "content_scripts": [ {
     "js": [ "jquery-2.1.4.min.js", "jquery.qtip.min.js", "blockspring.js", "highlight.js", "main.js" ],
